@@ -107,7 +107,6 @@ namespace KopyalaBeni
         } // rictextbox siyah fore color
         private void BKarakterEkle_Click(object sender, EventArgs e)
         {
-            listBox2.Items.Clear();
             listBox2.Items.Add(TKarakter.Text);
         }
 
