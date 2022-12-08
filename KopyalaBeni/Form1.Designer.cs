@@ -29,15 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.bTemizle = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -45,12 +43,15 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.BCikar = new System.Windows.Forms.Button();
-            this.BKarakterEkle = new System.Windows.Forms.Button();
             this.TKarakter = new System.Windows.Forms.RichTextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lSatirSayisi = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.bTemizle = new System.Windows.Forms.Button();
+            this.BKarakterEkle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -151,48 +152,6 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(189)))), ((int)(((byte)(50)))));
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Font = new System.Drawing.Font("Gothamic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(135, 65);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Başlat";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(255)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Gothamic", 12F);
-            this.button1.Location = new System.Drawing.Point(135, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(135, 65);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Durdur";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // bTemizle
-            // 
-            this.bTemizle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(197)))), ((int)(((byte)(49)))));
-            this.bTemizle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bTemizle.Font = new System.Drawing.Font("Gothamic", 12F);
-            this.bTemizle.Location = new System.Drawing.Point(135, 65);
-            this.bTemizle.Margin = new System.Windows.Forms.Padding(0);
-            this.bTemizle.Name = "bTemizle";
-            this.bTemizle.Size = new System.Drawing.Size(135, 65);
-            this.bTemizle.TabIndex = 12;
-            this.bTemizle.Text = "Temizle";
-            this.bTemizle.UseVisualStyleBackColor = false;
-            this.bTemizle.Click += new System.EventHandler(this.bTemizle_Click);
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
@@ -283,28 +242,17 @@
             this.BCikar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(65)))), ((int)(((byte)(24)))));
             this.BCikar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BCikar.Font = new System.Drawing.Font("Gothamic", 12F);
+            this.BCikar.Image = global::KopyalaBeni.Properties.Resources.icons8_delete_receipt;
+            this.BCikar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BCikar.Location = new System.Drawing.Point(0, 59);
             this.BCikar.Margin = new System.Windows.Forms.Padding(0);
             this.BCikar.Name = "BCikar";
             this.BCikar.Size = new System.Drawing.Size(135, 60);
             this.BCikar.TabIndex = 12;
             this.BCikar.Text = "Çıkar";
+            this.BCikar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BCikar.UseVisualStyleBackColor = false;
             this.BCikar.Click += new System.EventHandler(this.BCikar_Click);
-            // 
-            // BKarakterEkle
-            // 
-            this.BKarakterEkle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
-            this.BKarakterEkle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BKarakterEkle.Font = new System.Drawing.Font("Gothamic", 12F);
-            this.BKarakterEkle.Location = new System.Drawing.Point(0, 0);
-            this.BKarakterEkle.Margin = new System.Windows.Forms.Padding(0);
-            this.BKarakterEkle.Name = "BKarakterEkle";
-            this.BKarakterEkle.Size = new System.Drawing.Size(135, 59);
-            this.BKarakterEkle.TabIndex = 11;
-            this.BKarakterEkle.Text = "Ekle";
-            this.BKarakterEkle.UseVisualStyleBackColor = false;
-            this.BKarakterEkle.Click += new System.EventHandler(this.BKarakterEkle_Click);
             // 
             // TKarakter
             // 
@@ -358,6 +306,74 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Kırmızı Liste ↑";
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(189)))), ((int)(((byte)(50)))));
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.Font = new System.Drawing.Font("Gothamic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = global::KopyalaBeni.Properties.Resources.icons8_start;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.Location = new System.Drawing.Point(0, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(135, 65);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Başlat";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(255)))));
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Font = new System.Drawing.Font("Gothamic", 12F);
+            this.button1.Image = global::KopyalaBeni.Properties.Resources.icons8_pause_button;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(135, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(135, 65);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Durdur";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // bTemizle
+            // 
+            this.bTemizle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(197)))), ((int)(((byte)(49)))));
+            this.bTemizle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bTemizle.Font = new System.Drawing.Font("Gothamic", 12F);
+            this.bTemizle.Image = global::KopyalaBeni.Properties.Resources.icons8_broom;
+            this.bTemizle.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bTemizle.Location = new System.Drawing.Point(135, 65);
+            this.bTemizle.Margin = new System.Windows.Forms.Padding(0);
+            this.bTemizle.Name = "bTemizle";
+            this.bTemizle.Size = new System.Drawing.Size(135, 65);
+            this.bTemizle.TabIndex = 12;
+            this.bTemizle.Text = "Temizle";
+            this.bTemizle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bTemizle.UseVisualStyleBackColor = false;
+            this.bTemizle.Click += new System.EventHandler(this.bTemizle_Click);
+            // 
+            // BKarakterEkle
+            // 
+            this.BKarakterEkle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(209)))), ((int)(((byte)(55)))));
+            this.BKarakterEkle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BKarakterEkle.Font = new System.Drawing.Font("Gothamic", 12F);
+            this.BKarakterEkle.Image = global::KopyalaBeni.Properties.Resources.icons8_add;
+            this.BKarakterEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BKarakterEkle.Location = new System.Drawing.Point(0, 0);
+            this.BKarakterEkle.Margin = new System.Windows.Forms.Padding(0);
+            this.BKarakterEkle.Name = "BKarakterEkle";
+            this.BKarakterEkle.Size = new System.Drawing.Size(135, 59);
+            this.BKarakterEkle.TabIndex = 11;
+            this.BKarakterEkle.Text = "Ekle";
+            this.BKarakterEkle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BKarakterEkle.UseVisualStyleBackColor = false;
+            this.BKarakterEkle.Click += new System.EventHandler(this.BKarakterEkle_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -365,6 +381,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(43)))), ((int)(((byte)(57)))));
             this.ClientSize = new System.Drawing.Size(523, 342);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
