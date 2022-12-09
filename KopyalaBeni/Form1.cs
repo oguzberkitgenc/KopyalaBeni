@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace KopyalaBeni
 {
@@ -93,15 +87,12 @@ namespace KopyalaBeni
                 richTextBox1.ScrollToCaret();
 
                 listData.Items.Add(sondeger);
-
             }
         }
-
         private void button2_Click_1(object sender, EventArgs e) // timer 1 start
         {
             timer1.Start();
         }
-
         private void bTemizle_Click(object sender, EventArgs e) // temizle
         {
             DialogResult secenek = MessageBox.Show(" Hasss..\n Kodlar temizlenecek.\n Onay veriyor musun?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
@@ -119,14 +110,11 @@ namespace KopyalaBeni
             {
                 MessageBox.Show("Oh Tamam. İşlemi İptal Ettim", "Haberin Ola", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
-
         private void button1_Click_1(object sender, EventArgs e) // timer 1 stop
         {
             timer1.Stop();
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             richTextBox1.ForeColor = Color.Black;
@@ -144,7 +132,6 @@ namespace KopyalaBeni
             var satirSayisi = richTextBox1.Lines.Count();
             lSatirSayisi.Text = satirSayisi.ToString();
         }
-
         private void BCikar_Click(object sender, EventArgs e)
         {
             listBox2.Items.Remove(listBox2.SelectedItem);
