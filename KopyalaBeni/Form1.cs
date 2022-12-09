@@ -69,7 +69,7 @@ namespace KopyalaBeni
                 {
                     timer1.Stop();
                     richTextBox1.BackColor = Color.FromArgb(252, 92, 101);
-                    MessageBox.Show("Dikkatli Ol. Bu kod zaten var", "İşini Düzgün Yap Beni YORMA !", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Dikkatli Ol. Bu Kod Zaten Buralarda Mevcut", "İşini Düzgün Yap Beni Yorma Kanka", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     break;
                 }
             }
@@ -103,7 +103,7 @@ namespace KopyalaBeni
 
         private void bTemizle_Click(object sender, EventArgs e) // temizle
         {
-            DialogResult secenek = MessageBox.Show(" Kodlar temizlenecek. \n Onay veriyor musun?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            DialogResult secenek = MessageBox.Show(" Hasss..\n Kodlar temizlenecek.\n Onay veriyor musun?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             if (secenek == DialogResult.Yes)
             {
                 timer1.Stop();
@@ -116,7 +116,7 @@ namespace KopyalaBeni
             }
             else
             {
-                MessageBox.Show("İşlem iptal edildi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Oh Tamam. İşlemi İptal Ettim", "Haberin Ola", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
