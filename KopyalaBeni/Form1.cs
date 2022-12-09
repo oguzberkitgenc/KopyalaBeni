@@ -23,6 +23,7 @@ namespace KopyalaBeni
         private void Form1_Load(object sender, EventArgs e) // form açılış
         {
             //1 - Ş - Ü - İ - Ö - Ç - Ğ - 0 - O
+            listData.Items.Add("abcdefg");
             listBox2.Items.Add("1");
             listBox2.Items.Add("Ş");
             listBox2.Items.Add("Ü");
@@ -31,12 +32,10 @@ namespace KopyalaBeni
             listBox2.Items.Add("Ğ");
             listBox2.Items.Add("0");
             listBox2.Items.Add("O");
-
             listBox1.Visible = false;
             listBox1.Items.Add("*/*/*/*");
             listBox1.Items.Add("----");
         }
-        int say = 0;
         void KarakterBul()
         {
             for (int i = 0; i < listBox2.Items.Count; i++)
@@ -47,6 +46,7 @@ namespace KopyalaBeni
                 if (sonuc >= 0)
                 {
                     richTextBox1.ForeColor = Color.Red;
+                    Console.Beep(1500, 125);
                     break;
                 }
                 else
@@ -54,22 +54,46 @@ namespace KopyalaBeni
                     richTextBox1.ForeColor = Color.Black;
                 }
             }
-
-
         }
+        /// <summary>
+        /// Hafızadaki değeri listData listesinde sorguluyor. Eğer varsa uyarı gönderir.
+        /// </summary>
+        void TekrarEngeller()
+        {
+            for (int i = 0; i < listData.Items.Count; i++)
+            {
+                string metin = Clipboard.GetText();
+                string ara = listData.Items[i].ToString();
+                int sonuc = metin.IndexOf(ara);
+                if (sonuc >= 0)
+                {
+                    timer1.Stop();
+                    richTextBox1.BackColor = Color.FromArgb(252, 92, 101);
+                    MessageBox.Show("Dikkatli Ol. Bu kod zaten var", "İşini Düzgün Yap Beni YORMA !", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    break;
+                }
+            }
+        }
+        int say = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int adet = listBox1.Items.Count - 1; // adet
+            int adet = listBox1.Items.Count - 1; // listbox adet -1
             string sondeger = listBox1.Items[adet].ToString(); // son değeri aldı
-            if (sondeger != Clipboard.GetText())
+            string kopyalanan = Clipboard.GetText();
+            if (sondeger != kopyalanan && kopyalanan != "")
             {
                 say++;
-                listBox1.Items.Add(Clipboard.GetText());
-                richTextBox1.Text += "\n" + Clipboard.GetText();
-                //  KarakterBul();
-                richTextBox1.SelectionStart = richTextBox1.Text.Length;
-            }
+                listBox1.Items.Add(kopyalanan);
+                richTextBox1.Text += kopyalanan + "\n";
+                KarakterBul();
+                TekrarEngeller();
 
+                richTextBox1.SelectionStart = richTextBox1.Text.Length;
+                richTextBox1.ScrollToCaret();
+
+                listData.Items.Add(sondeger);
+
+            }
         }
 
         private void button2_Click_1(object sender, EventArgs e) // timer 1 start
@@ -85,6 +109,7 @@ namespace KopyalaBeni
                 timer1.Stop();
                 say = 0;
                 listBox1.Items.Clear();
+                listData.Items.Clear();
                 listBox1.Items.Add("*/*/*/*");
                 listBox1.Items.Add("----");
                 richTextBox1.Text = "";
@@ -104,7 +129,9 @@ namespace KopyalaBeni
         private void button3_Click(object sender, EventArgs e)
         {
             richTextBox1.ForeColor = Color.Black;
-        } // rictextbox siyah fore color
+            timer1.Start();
+            richTextBox1.BackColor = Color.FromArgb(229, 205, 168);
+        }
         private void BKarakterEkle_Click(object sender, EventArgs e)
         {
             listBox2.Items.Add(TKarakter.Text);
@@ -114,7 +141,7 @@ namespace KopyalaBeni
         {
             KarakterBul();
             var satirSayisi = richTextBox1.Lines.Count();
-            lSatirSayisi.Text = "Satır Sayısı: "+satirSayisi.ToString();
+            lSatirSayisi.Text = satirSayisi.ToString();
         }
 
         private void BCikar_Click(object sender, EventArgs e)
