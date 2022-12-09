@@ -68,6 +68,7 @@ namespace KopyalaBeni
                 if (sonuc >= 0)
                 {
                     timer1.Stop();
+                    Console.Beep(1500, 1000);
                     richTextBox1.BackColor = Color.FromArgb(252, 92, 101);
                     MessageBox.Show("Dikkatli Ol. Bu Kod Zaten Buralarda Mevcut", "İşini Düzgün Yap Beni Yorma Kanka", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     break;
