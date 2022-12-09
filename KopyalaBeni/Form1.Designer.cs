@@ -117,7 +117,7 @@
             this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(205)))), ((int)(((byte)(168)))));
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Font = new System.Drawing.Font("Consolas", 12F);
+            this.richTextBox1.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(0);
             this.richTextBox1.Name = "richTextBox1";
@@ -422,7 +422,7 @@
             // 
             this.listData.FormattingEnabled = true;
             this.listData.Location = new System.Drawing.Point(154, 7);
-            this.listData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listData.Margin = new System.Windows.Forms.Padding(2);
             this.listData.Name = "listData";
             this.listData.Size = new System.Drawing.Size(54, 17);
             this.listData.TabIndex = 2;
@@ -454,7 +454,7 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(50, 149);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(20, 17);
             this.listBox1.TabIndex = 11;
@@ -467,7 +467,7 @@
             this.ClientSize = new System.Drawing.Size(562, 474);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(734, 639);
             this.MinimumSize = new System.Drawing.Size(438, 374);
