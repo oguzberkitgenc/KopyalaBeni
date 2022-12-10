@@ -57,6 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.BData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -129,6 +130,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.listData);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.lSatirSayisi);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -408,7 +410,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.listData);
+            this.panel2.Controls.Add(this.BData);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -421,7 +423,7 @@
             // listData
             // 
             this.listData.FormattingEnabled = true;
-            this.listData.Location = new System.Drawing.Point(154, 7);
+            this.listData.Location = new System.Drawing.Point(222, 6);
             this.listData.Margin = new System.Windows.Forms.Padding(2);
             this.listData.Name = "listData";
             this.listData.Size = new System.Drawing.Size(54, 17);
@@ -458,6 +460,16 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(20, 17);
             this.listBox1.TabIndex = 11;
+            // 
+            // BData
+            // 
+            this.BData.Location = new System.Drawing.Point(154, 18);
+            this.BData.Name = "BData";
+            this.BData.Size = new System.Drawing.Size(75, 23);
+            this.BData.TabIndex = 4;
+            this.BData.Text = "button4";
+            this.BData.UseVisualStyleBackColor = true;
+            this.BData.Click += new System.EventHandler(this.BData_Click);
             // 
             // Form1
             // 
@@ -523,6 +535,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listData;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button BData;
     }
 }
 

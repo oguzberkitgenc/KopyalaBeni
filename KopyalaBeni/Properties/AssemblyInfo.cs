@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("KopyalaBeni")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Kopyalanan değerleri anlık olarak lok kayıtlarını tutmaya yardımcı olur.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("KopyalaBeni")]
+[assembly: AssemblyCompany("Software .Net Developer Berkit")]
+[assembly: AssemblyProduct("Kopyala Beni")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("Berkit")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible

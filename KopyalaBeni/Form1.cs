@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
+using System.Data.OleDb;
 using System.Windows.Forms;
+
 namespace KopyalaBeni
 {
     public partial class Form1 : Form
@@ -10,6 +12,7 @@ namespace KopyalaBeni
         {
             InitializeComponent();
         }
+        OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\KopyalaBeni\DbCopy.accdb");
         private void button2_Click(object sender, EventArgs e) // timer1 start
         {
             timer1.Start();
@@ -82,7 +85,6 @@ namespace KopyalaBeni
                 richTextBox1.Text += kopyalanan + "\n";
                 KarakterBul();
                 TekrarEngeller();
-
                 richTextBox1.SelectionStart = richTextBox1.Text.Length;
                 richTextBox1.ScrollToCaret();
 
@@ -135,6 +137,12 @@ namespace KopyalaBeni
         private void BCikar_Click(object sender, EventArgs e)
         {
             listBox2.Items.Remove(listBox2.SelectedItem);
+        }
+
+        private void BData_Click(object sender, EventArgs e)
+        {
+            FData f = new FData();
+            f.ShowDialog();
         }
     }
 }
