@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
-using System.Data.OleDb;
 using System.Windows.Forms;
 
 namespace KopyalaBeni
@@ -12,7 +11,6 @@ namespace KopyalaBeni
         {
             InitializeComponent();
         }
-        OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\KopyalaBeni\DbCopy.accdb");
         private void button2_Click(object sender, EventArgs e) // timer1 start
         {
             timer1.Start();
@@ -139,10 +137,10 @@ namespace KopyalaBeni
             listBox2.Items.Remove(listBox2.SelectedItem);
         }
 
-        private void BData_Click(object sender, EventArgs e)
+        private void BGrupAyarlari_Click(object sender, EventArgs e)
         {
-            FData f = new FData();
-            f.ShowDialog();
+            FGrupIslemleri f = new FGrupIslemleri();
+            f.Show();
         }
     }
 }

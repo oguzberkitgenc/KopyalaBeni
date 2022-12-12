@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("KopyalaBeni")]
+[assembly: AssemblyTitle("Software .Net Developer Berkit")]
 [assembly: AssemblyDescription("Kopyalanan değerleri anlık olarak lok kayıtlarını tutmaya yardımcı olur.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Software .Net Developer Berkit")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Kopyala Beni")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("Berkit")]
