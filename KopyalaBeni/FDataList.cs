@@ -25,6 +25,7 @@ namespace KopyalaBeni
             da.Fill(dt);
             gridControl1.DataSource = dt;
             con.Close();
+            this.Text = "Veri Listeleri > Tüm Liste";
         }
 
         private void bYedek_Click(object sender, EventArgs e)
@@ -36,6 +37,7 @@ namespace KopyalaBeni
             da.Fill(dt);
             gridControl1.DataSource = dt;
             con.Close();
+            this.Text = "Veri Listeleri > Yedek Liste";
         }
     }
 }

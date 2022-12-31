@@ -1,14 +1,15 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Software .Net Developer Berkit")]
-[assembly: AssemblyDescription("Kopyalanan değerleri anlık olarak lok kayıtlarını tutmaya yardımcı olur.")]
+[assembly: AssemblyTitle("Kopyala Beni © Software Developer Golge Root")]
+[assembly: AssemblyDescription("Kopyalanan değerleri anlık olarak kayıtlarını tutmaya yardımcı olur.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Berkit")]
 [assembly: AssemblyProduct("Kopyala Beni")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("Berkit")]
@@ -33,4 +34,5 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: NeutralResourcesLanguage("tr-TR")]

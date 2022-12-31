@@ -53,7 +53,6 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.BYedektenYukle = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.bVeritabani = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -128,7 +127,6 @@
             this.richTextBox1.Size = new System.Drawing.Size(365, 568);
             this.richTextBox1.TabIndex = 8;
             this.richTextBox1.Text = "";
-            this.richTextBox1.Click += new System.EventHandler(this.richTextBox1_Click);
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             this.richTextBox1.DoubleClick += new System.EventHandler(this.richTextBox1_DoubleClick);
             // 
@@ -380,7 +378,6 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.Controls.Add(this.bVeritabani, 1, 1);
-            this.tableLayoutPanel8.Controls.Add(this.button4, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.BYedektenYukle, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.BSat, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Top;
@@ -411,16 +408,6 @@
             this.BYedektenYukle.Text = "YEDEKLERİ GETİR";
             this.BYedektenYukle.UseVisualStyleBackColor = false;
             this.BYedektenYukle.Click += new System.EventHandler(this.BYedektenYukle_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(3, 50);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
             // 
             // bVeritabani
             // 
@@ -598,7 +585,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Button BYedektenYukle;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button bVeritabani;
     }
 }

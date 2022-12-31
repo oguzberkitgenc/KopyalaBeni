@@ -40,12 +40,12 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
-            this.gridControl1.Location = new System.Drawing.Point(0, 41);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.gridControl1.Location = new System.Drawing.Point(0, 50);
             this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(693, 581);
+            this.gridControl1.Size = new System.Drawing.Size(649, 622);
             this.gridControl1.TabIndex = 39;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -54,7 +54,7 @@
             // 
             this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.SkyBlue;
             this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridView1.DetailHeight = 842;
+            this.gridView1.DetailHeight = 1052;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -72,9 +72,9 @@
             this.bTum.Appearance.Options.UseFont = true;
             this.bTum.Dock = System.Windows.Forms.DockStyle.Left;
             this.bTum.Location = new System.Drawing.Point(0, 0);
-            this.bTum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bTum.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.bTum.Name = "bTum";
-            this.bTum.Size = new System.Drawing.Size(351, 41);
+            this.bTum.Size = new System.Drawing.Size(306, 50);
             this.bTum.TabIndex = 40;
             this.bTum.Text = "Tüm Verileri Listele";
             this.bTum.Click += new System.EventHandler(this.bTum_Click);
@@ -86,10 +86,10 @@
             this.bYedek.Appearance.Options.UseBackColor = true;
             this.bYedek.Appearance.Options.UseFont = true;
             this.bYedek.Dock = System.Windows.Forms.DockStyle.Right;
-            this.bYedek.Location = new System.Drawing.Point(352, 0);
-            this.bYedek.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.bYedek.Location = new System.Drawing.Point(306, 0);
+            this.bYedek.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.bYedek.Name = "bYedek";
-            this.bYedek.Size = new System.Drawing.Size(341, 41);
+            this.bYedek.Size = new System.Drawing.Size(343, 50);
             this.bYedek.TabIndex = 41;
             this.bYedek.Text = "Yedekteki Verileri Listele";
             this.bYedek.Click += new System.EventHandler(this.bYedek_Click);
@@ -98,7 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 622);
+            this.ClientSize = new System.Drawing.Size(649, 672);
             this.Controls.Add(this.bYedek);
             this.Controls.Add(this.bTum);
             this.Controls.Add(this.gridControl1);

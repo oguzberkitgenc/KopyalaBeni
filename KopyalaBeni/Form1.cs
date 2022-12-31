@@ -52,7 +52,7 @@ namespace KopyalaBeni
                 if (sonuc >= 0)
                 {
                     richTextBox1.ForeColor = Color.Red;
-                    Console.Beep(1500, 125);
+                    Console.Beep(1500, 80);
                     break;
                 }
                 else
@@ -74,7 +74,7 @@ namespace KopyalaBeni
                 if (sonuc >= 0)
                 {
                     timer1.Stop();
-                    Console.Beep(1500, 1000);
+                    Console.Beep(1500, 800);
                     richTextBox1.BackColor = Color.FromArgb(252, 92, 101);
                     MessageBox.Show("Dikkatli Ol. Bu Kod Zaten Buralarda Mevcut", "İşini Düzgün Yap Beni Yorma Kanka", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     break;
@@ -140,13 +140,12 @@ namespace KopyalaBeni
                 {
                     richTextBox1.Text += "\n" + kopyalanan;
                 }
-                KarakterBul();
+                //  KarakterBul();
                 TekrarEngeller();
                 DateTime dt = DateTime.Now;
                 richTextBox1.SelectionStart = richTextBox1.Text.Length;
                 richTextBox1.ScrollToCaret();
                 listData.Items.Add(sondeger);
-
 
                 // Hafızaya alınan her kodu yedek tablosuna anlık olarak alır
                 con.Open();
@@ -230,6 +229,7 @@ namespace KopyalaBeni
                 con.Close();
                 IslemNoGetir();
                 this.Text = "Kopyala Beni BARAANN:";
+                Temizle();
                 MessageBox.Show("Kodlar veritabanına eklendi ve anlık alınan veriler silindi", "İşlem Tamamlandı", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -239,15 +239,11 @@ namespace KopyalaBeni
                 MessageBox.Show("Boş Satır Var. Lütfen Satırları Kontrol Edin", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void richTextBox1_Click(object sender, EventArgs e)
-        {
-            timer1.Stop();
-        }
         private void richTextBox1_DoubleClick(object sender, EventArgs e)
         {
-            string al = richTextBox1.Text;
-            Temizle();
-            richTextBox1.Text = al;
+           // string al = richTextBox1.Text;
+         //   Temizle();
+          //  richTextBox1.Text = al;
         }
 
         private void BYedektenYukle_Click(object sender, EventArgs e)
@@ -275,20 +271,6 @@ namespace KopyalaBeni
             this.Text = "Kopyala Beni BARAANN";
 
         }
-
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            //IslemNoArttir();
-            //IslemNoGetir();
-
-            //DateTime dt = DateTime.Now;
-            //MessageBox.Show(dt.ToString());
-
-
-            label3.Text = "Veritabanına kaydediliyor...";
-            lSatirSayisi.Visible = false;
-        }
-
         private void bVeritabani_Click(object sender, EventArgs e)
         {
             FDataList f = new FDataList();
