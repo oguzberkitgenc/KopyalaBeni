@@ -26,6 +26,7 @@ namespace KopyalaBeni
         private void Form1_Load(object sender, EventArgs e) // form açılış
         {
             //1 - Ş - Ü - İ - Ö - Ç - Ğ - 0 - O
+            IslemNoGetir();
             listData.Items.Add("abcdefg");
             listBox2.Items.Add("1");
             listBox2.Items.Add("Ş");
@@ -38,7 +39,8 @@ namespace KopyalaBeni
             listBox1.Visible = false;
             listBox1.Items.Add("*/*/*/*");
             listBox1.Items.Add("----");
-            PaketSirala();
+
+
         }
         void KarakterBul()
         {
@@ -79,17 +81,45 @@ namespace KopyalaBeni
                 }
             }
         }
-        void PaketSirala()
+        int islemNo = 0;
+        void IslemNoGetir()
         {
             con.Open();
-            OleDbCommand komut = new OleDbCommand("Select ID,GRUPAD From TBL_GRUPLAR", con);
-            OleDbDataAdapter da = new OleDbDataAdapter(komut);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            ListPaket.ValueMember = "ID";
-            ListPaket.DisplayMember = "GRUPAD";
-            ListPaket.DataSource = dt;
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandText = "SELECT ISLEMNO FROM TBL_ISLEMNO";
+            cmd.Connection = con;
+            OleDbDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                islemNo = Convert.ToInt32(dr[0]);
+            }
             con.Close();
+            lblIslemNo.Text = islemNo.ToString();
+        }
+
+        void IslemNoArttir()
+        {
+            islemNo += 1;
+            con.Open();
+            OleDbCommand arttir = new OleDbCommand();
+            arttir.CommandText = "UPDATE TBL_ISLEMNO SET ISLEMNO=@P1";
+            arttir.Connection = con;
+            arttir.Parameters.AddWithValue("@P1", islemNo);
+            arttir.ExecuteNonQuery();
+            con.Close();
+        }
+
+        void Temizle()
+        {
+            timer1.Stop();
+            say = 0;
+            listBox1.Items.Clear();
+            listData.Items.Clear();
+            listBox1.Items.Add("*/*/*/*");
+            listBox1.Items.Add("----");
+            richTextBox1.ForeColor = Color.Black;
+            richTextBox1.BackColor = Color.FromArgb(229, 205, 168);
+            richTextBox1.Text = "";
         }
         int say = 0;
         private void timer1_Tick(object sender, EventArgs e)
@@ -102,12 +132,30 @@ namespace KopyalaBeni
                 // ilk değer aldığı zaman \n koymasın. 2.değer ve sonrasında \n işaretiyle devam etsin. Bu şekilde satır sayısı doğru sayılacak
                 say++;
                 listBox1.Items.Add(kopyalanan);
-                richTextBox1.Text += kopyalanan + "\n";
+                if (say < 2)
+                {
+                    richTextBox1.Text += kopyalanan;
+                }
+                else
+                {
+                    richTextBox1.Text += "\n" + kopyalanan;
+                }
                 KarakterBul();
                 TekrarEngeller();
+                DateTime dt = DateTime.Now;
                 richTextBox1.SelectionStart = richTextBox1.Text.Length;
                 richTextBox1.ScrollToCaret();
                 listData.Items.Add(sondeger);
+
+
+                // Hafızaya alınan her kodu yedek tablosuna anlık olarak alır
+                con.Open();
+                OleDbCommand cmd = new OleDbCommand("INSERT INTO TBL_YEDEK (KOD,TARIH,ISLEMNO) VALUES (@P1,@P2,@P3)", con);
+                cmd.Parameters.AddWithValue("@P1", kopyalanan);
+                cmd.Parameters.AddWithValue("@P2", dt.ToString());
+                cmd.Parameters.AddWithValue("@P3", lblIslemNo.Text);
+                cmd.ExecuteNonQuery();
+                con.Close();
             }
         }
         private void button2_Click_1(object sender, EventArgs e) // timer 1 start
@@ -119,16 +167,7 @@ namespace KopyalaBeni
             DialogResult secenek = MessageBox.Show(" Hasss..\n Kodlar temizlenecek.\n Onay veriyor musun?", "UYARI", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             if (secenek == DialogResult.Yes)
             {
-                timer1.Stop();
-                say = 0;
-                listBox1.Items.Clear();
-                listData.Items.Clear();
-                listBox1.Items.Add("*/*/*/*");
-                listBox1.Items.Add("----");
-                richTextBox1.ForeColor = Color.Black;
-                richTextBox1.BackColor = Color.FromArgb(229, 205, 168);
-                PaketSirala();
-                richTextBox1.Text = "";
+                Temizle();
             }
             else
             {
@@ -145,7 +184,6 @@ namespace KopyalaBeni
             richTextBox1.ForeColor = Color.Black;
             timer1.Start();
             richTextBox1.BackColor = Color.FromArgb(229, 205, 168);
-            PaketSirala();
         }
         private void BKarakterEkle_Click(object sender, EventArgs e)
         {
@@ -156,19 +194,15 @@ namespace KopyalaBeni
             KarakterBul();
             var satirSayisi = richTextBox1.Lines.Count();
             lSatirSayisi.Text = satirSayisi.ToString();
+            if (richTextBox1.Text.Length <= 3) { listData.Items.Clear(); }
         }
         private void BCikar_Click(object sender, EventArgs e)
         {
             listBox2.Items.Remove(listBox2.SelectedItem);
         }
-
-        private void BGrupAyarlari_Click(object sender, EventArgs e)
-        {
-            FGrupIslemleri f = new FGrupIslemleri();
-            f.Show();
-        }
         private void BSat_Click(object sender, EventArgs e)
         {
+            this.Text = "Veritabanına kaydediliyor...";
             //16 ALMALI
             timer1.Stop();
             int basla = 0;
@@ -176,35 +210,89 @@ namespace KopyalaBeni
             {
                 for (int i = 0; i < int.Parse(lSatirSayisi.Text); i++)
                 {
+                    //Richtextbox'taki kodları veritabanına kaydeder
                     con.Open();
                     OleDbCommand cmd = new OleDbCommand();
-                    cmd.CommandText = "INSERT INTO TBL_KODLAR (GRUPAD,GRUPTL,KOD,TARIH) VALUES (@P1,@P2,@P3,@P4)";
+                    cmd.CommandText = "INSERT INTO TBL_KODLAR (KOD,TARIH,ISLEMNO) VALUES (@P1,@P2,@P3)";
                     cmd.Connection = con;
-                    cmd.Parameters.AddWithValue("@p1", ListPaket.Text.ToString());
-                    cmd.Parameters.AddWithValue("@p2", ListPaket.SelectedValue.ToString());
-                    cmd.Parameters.AddWithValue("@p3", richTextBox1.Text.Substring(basla, 16));
-                    cmd.Parameters.AddWithValue("@p4", DateTime.Now.ToString());
+                    cmd.Parameters.AddWithValue("@p1", richTextBox1.Text.Substring(basla, 16));
+                    cmd.Parameters.AddWithValue("@p2", DateTime.Now.ToString());
+                    cmd.Parameters.AddWithValue("@p3", int.Parse(lblIslemNo.Text));
                     cmd.ExecuteNonQuery();
                     con.Close();
                     basla += 17;
                 }
-                MessageBox.Show("eklendi");
+                IslemNoArttir();
+                //Yedek alınan tablodaki verileri siler
+                con.Open();
+                OleDbCommand sil = new OleDbCommand("DELETE FROM TBL_YEDEK", con);
+                sil.ExecuteNonQuery();
+                con.Close();
+                IslemNoGetir();
+                this.Text = "Kopyala Beni BARAANN:";
+                MessageBox.Show("Kodlar veritabanına eklendi ve anlık alınan veriler silindi", "İşlem Tamamlandı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             catch
             {
+                con.Close();
                 MessageBox.Show("Boş Satır Var. Lütfen Satırları Kontrol Edin", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
-
-        private void ListPaket_MouseClick(object sender, MouseEventArgs e)
-        {
-            PaketSirala();
-        }
-
         private void richTextBox1_Click(object sender, EventArgs e)
         {
             timer1.Stop();
+        }
+        private void richTextBox1_DoubleClick(object sender, EventArgs e)
+        {
+            string al = richTextBox1.Text;
+            Temizle();
+            richTextBox1.Text = al;
+        }
+
+        private void BYedektenYukle_Click(object sender, EventArgs e)
+        {
+            this.Text = "Yedekler Getiriliyor...";
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("SELECT [KOD] FROM TBL_YEDEK", con);
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            OleDbDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                listData.Items.Add(dr[0].ToString());
+                say++;
+                if (say < 2)
+                {
+                    richTextBox1.Text += dr[0].ToString();
+                }
+                else
+                {
+                    richTextBox1.Text += "\n" + dr[0].ToString();
+
+                }
+            }
+            con.Close();
+            this.Text = "Kopyala Beni BARAANN";
+
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            //IslemNoArttir();
+            //IslemNoGetir();
+
+            //DateTime dt = DateTime.Now;
+            //MessageBox.Show(dt.ToString());
+
+
+            label3.Text = "Veritabanına kaydediliyor...";
+            lSatirSayisi.Visible = false;
+        }
+
+        private void bVeritabani_Click(object sender, EventArgs e)
+        {
+            FDataList f = new FDataList();
+            f.Show();
         }
     }
 }

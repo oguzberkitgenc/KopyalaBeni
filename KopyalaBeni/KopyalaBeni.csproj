@@ -73,11 +73,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FGrupIslemleri.cs">
+    <Compile Include="FDataList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FGrupIslemleri.Designer.cs">
-      <DependentUpon>FGrupIslemleri.cs</DependentUpon>
+    <Compile Include="FDataList.Designer.cs">
+      <DependentUpon>FDataList.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -87,8 +87,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FGrupIslemleri.resx">
-      <DependentUpon>FGrupIslemleri.cs</DependentUpon>
+    <EmbeddedResource Include="FDataList.resx">
+      <DependentUpon>FDataList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
