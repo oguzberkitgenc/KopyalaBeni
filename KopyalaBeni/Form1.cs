@@ -23,24 +23,31 @@ namespace KopyalaBeni
         {
             timer1.Start();
         }
+
+
         private void Form1_Load(object sender, EventArgs e) // form açılış
         {
             //1 - Ş - Ü - İ - Ö - Ç - Ğ - 0 - O
+            cmbMod.SelectedIndex = 0;
             IslemNoGetir();
             listData.Items.Add("abcdefg");
-            listBox2.Items.Add("1");
-            listBox2.Items.Add("Ş");
-            listBox2.Items.Add("Ü");
-            listBox2.Items.Add("İ");
-            listBox2.Items.Add("Ö");
-            listBox2.Items.Add("Ğ");
-            listBox2.Items.Add("0");
-            listBox2.Items.Add("O");
             listBox1.Visible = false;
             listBox1.Items.Add("*/*/*/*");
             listBox1.Items.Add("----");
-
-
+        }
+        void KarakterListele()
+        {
+            listBox2.Items.Clear();
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand("SELECT [KARAKTER] FROM TBL_MOD WHERE [MOD]=@P1", con);
+            cmd.Parameters.AddWithValue("@P1", cmbMod.Text);
+            cmd.ExecuteNonQuery();
+            OleDbDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                listBox2.Items.Add(dr[0].ToString());
+            }
+            con.Close();
         }
         void KarakterBul()
         {
@@ -160,6 +167,7 @@ namespace KopyalaBeni
         private void button2_Click_1(object sender, EventArgs e) // timer 1 start
         {
             timer1.Start();
+            this.Text = "Kopyala Beni BARAANN  >$ ÇALIŞIYOR";
         }
         private void bTemizle_Click(object sender, EventArgs e) // temizle
         {
@@ -176,6 +184,7 @@ namespace KopyalaBeni
         private void button1_Click_1(object sender, EventArgs e) // timer 1 stop
         {
             timer1.Stop();
+            this.Text = "Kopyala Beni BARAANN  >$ DURDURULDU";
             //  richTextBox1.Text = richTextBox1.Text.Remove(int.Parse(lSatirSayisi.Text), richTextBox1.Text.IndexOf("\n"));
         }
         private void button3_Click(object sender, EventArgs e)
@@ -186,7 +195,18 @@ namespace KopyalaBeni
         }
         private void BKarakterEkle_Click(object sender, EventArgs e)
         {
-            listBox2.Items.Add(TKarakter.Text);
+            if (TKarakter.Text != "" && TKarakter.Text != " ")
+            {
+                con.Open();
+                OleDbCommand cmd = new OleDbCommand("INSERT INTO TBL_MOD (KARAKTER,MOD) VALUES (@P1,@P2)", con);
+                cmd.Parameters.AddWithValue("@P1", TKarakter.Text);
+                cmd.Parameters.AddWithValue("@P2", cmbMod.Text);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                KarakterListele();
+                TKarakter.Text = "";
+            }
+
         }
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -197,7 +217,7 @@ namespace KopyalaBeni
         }
         private void BCikar_Click(object sender, EventArgs e)
         {
-            listBox2.Items.Remove(listBox2.SelectedItem);
+            MessageBox.Show("Aktif Değil");
         }
         private void BSat_Click(object sender, EventArgs e)
         {
@@ -231,7 +251,6 @@ namespace KopyalaBeni
                 this.Text = "Kopyala Beni BARAANN:";
                 Temizle();
                 MessageBox.Show("Kodlar veritabanına eklendi ve anlık alınan veriler silindi", "İşlem Tamamlandı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
             catch
             {
@@ -239,13 +258,6 @@ namespace KopyalaBeni
                 MessageBox.Show("Boş Satır Var. Lütfen Satırları Kontrol Edin", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void richTextBox1_DoubleClick(object sender, EventArgs e)
-        {
-           // string al = richTextBox1.Text;
-         //   Temizle();
-          //  richTextBox1.Text = al;
-        }
-
         private void BYedektenYukle_Click(object sender, EventArgs e)
         {
             this.Text = "Yedekler Getiriliyor...";
@@ -255,6 +267,8 @@ namespace KopyalaBeni
             OleDbDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
+                richTextBox1.SelectionStart = richTextBox1.Text.Length;
+                richTextBox1.ScrollToCaret();
                 listData.Items.Add(dr[0].ToString());
                 say++;
                 if (say < 2)
@@ -266,15 +280,28 @@ namespace KopyalaBeni
                     richTextBox1.Text += "\n" + dr[0].ToString();
 
                 }
+
             }
             con.Close();
             this.Text = "Kopyala Beni BARAANN";
-
         }
         private void bVeritabani_Click(object sender, EventArgs e)
         {
             FDataList f = new FDataList();
             f.Show();
+        }
+        private void cmbMod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            KarakterListele();
+        }
+        private void bOpacityArttir_Click(object sender, EventArgs e)
+        {
+            this.Opacity += 0.15D;
+        }
+
+        private void bOpacityAzalt_Click(object sender, EventArgs e)
+        {
+            this.Opacity -= 0.15D;
         }
     }
 }
